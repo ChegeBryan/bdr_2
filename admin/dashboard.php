@@ -27,7 +27,7 @@ if (isset($_SESSION["admin_logged_In"]) || $_SESSION["admin_logged_in"] !== true
       <!-- Links -->
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link text-white" href="../logout.php">Admin Logout</a>
+          <a class="nav-link text-white" href="logout.php">Admin Logout</a>
         </li>
       </ul>
     </nav>
