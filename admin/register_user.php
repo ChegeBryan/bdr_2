@@ -63,6 +63,7 @@
     <script src="../assets/js/popper.min.js"></script>
     <script src="../assets/bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
     <script src="../js/form_validation.js"></script>
+    <script src="../js/clear_form.js"></script>
   </body>
 
 </html>
