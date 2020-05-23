@@ -2,6 +2,11 @@
 
 session_start();
 
+if (isset($_SESSION["admin_logged_In"]) || $_SESSION["admin_logged_in"] !== true) {
+  header("location: login.php");
+  exit;
+}
+
 require_once '../includes/config.php';
 
 $uploadError = $health = $fullname = "";
@@ -57,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link text-white" href="login.php">Login</a>
+          <a class="nav-link text-white" href="logout.php">Logout</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white" href="../index.php">Home</a>
