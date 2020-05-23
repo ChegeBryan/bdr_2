@@ -1,8 +1,12 @@
 <?php
 require_once '../includes/config.php';
 
+$health = $fullname = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+  $rnd_usr = "U-" . mt_rand();
+  $rnd_psw = mt_rand();
 
   $sql = "INSERT INTO bdr_users (fullname, dob, health, gender, pic, username, password) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
@@ -13,6 +17,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dob = $_POST['dob'];
     $health = trim($_POST['health']);
     $gender = $_POST['gender'];
+    $pic = $img;
+    $username = $rnd_usr;
+    $psw = password_hash($rnd_psw, PASSWORD_DEFAULT);
 
     if ($stmt->execute()) {
       header("location: register_user.php");
