@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 require_once '../includes/config.php';
 
 $uploadError = $health = $fullname = "";
@@ -25,6 +28,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $psw = password_hash($rnd_psw, PASSWORD_DEFAULT);
 
       if ($stmt->execute()) {
+        $_SESSION['message'] = "Registration Successful!";
+        $_SESSION['reg_id'] = "User Id: " . $userid;
+        $_SESSION['reg_psw'] = "Password : " . $rnd_psw;
         header("location: register_user.php");
       } else {
         header("location: ../error.php");
@@ -60,6 +66,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </nav>
     <div class="container d-flex justify-content-center py-4">
       <div class="card p-4 shadow-lg rounded-lg" style="width: 25rem">
+        <?php
+      if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
+        echo <<<ALERT
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {$_SESSION['message']}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="alert alert-info alert-dismissible fade show" role="alert">
+                {$_SESSION['reg_id']}
+                <br/>
+                {$_SESSION['reg_psw']}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            ALERT;
+      }
+      ?>
         <h3 class="card-title">User Registration</h3>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data"
               class="needs-validation" novalidate>
