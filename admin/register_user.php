@@ -1,3 +1,29 @@
+<?php
+require_once '../includes/config.php';
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+  $sql = "INSERT INTO bdr_users (fullname, dob, health, gender, pic, username, password) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+  if ($stmt = $conn->prepare($sql)) {
+    $stmt->bind_param("sssssss", $fullname, $dob, $health, $gender, $pic, $username, $psw);
+
+    $fullname = trim($_POST['fullname']);
+    $dob = $_POST['dob'];
+    $health = trim($_POST['health']);
+    $gender = $_POST['gender'];
+
+    if ($stmt->execute()) {
+      header("location: register_user.php");
+    } else {
+      header("location: ../error.php");
+    }
+    $stmt->close();
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html>
 
