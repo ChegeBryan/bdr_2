@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
           <div class="form-group">
             <label for="name">Full Name</label>
-            <input type="text" class="form-control" placeholder="Enter full name" name="full_name"
+            <input type="text" class="form-control" placeholder="Enter full name" name="fullname"
                    value="<?php echo $fullname; ?>" required>
           </div>
           <div class="form-group">
