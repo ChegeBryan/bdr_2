@@ -1,32 +1,36 @@
 <?php
 require_once '../includes/config.php';
 
-$health = $fullname = "";
+$uploadError = $health = $fullname = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+  include 'upload_img.php';
 
   $rnd_usr = "U-" . mt_rand();
   $rnd_psw = mt_rand();
 
-  $sql = "INSERT INTO bdr_users (fullname, dob, health, gender, pic, userid, password) VALUES (?, ?, ?, ?, ?, ?, ?)";
+  if ($uploadOk == 1) {
+    $sql = "INSERT INTO bdr_users (fullname, dob, health, gender, pic, userid, password) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-  if ($stmt = $conn->prepare($sql)) {
-    $stmt->bind_param("sssssss", $fullname, $dob, $health, $gender, $pic, $userid, $psw);
+    if ($stmt = $conn->prepare($sql)) {
+      $stmt->bind_param("sssssss", $fullname, $dob, $health, $gender, $pic, $userid, $psw);
 
-    $fullname = trim($_POST['fullname']);
-    $dob = $_POST['dob'];
-    $health = trim($_POST['health']);
-    $gender = $_POST['gender'];
-    $pic = $img;
-    $userid = $rnd_usr;
-    $psw = password_hash($rnd_psw, PASSWORD_DEFAULT);
+      $fullname = trim($_POST['fullname']);
+      $dob = $_POST['dob'];
+      $health = trim($_POST['health']);
+      $gender = $_POST['gender'];
+      $pic = $img;
+      $userid = $rnd_usr;
+      $psw = password_hash($rnd_psw, PASSWORD_DEFAULT);
 
-    if ($stmt->execute()) {
-      header("location: register_user.php");
-    } else {
-      header("location: ../error.php");
+      if ($stmt->execute()) {
+        header("location: register_user.php");
+      } else {
+        header("location: ../error.php");
+      }
+      $stmt->close();
     }
-    $stmt->close();
   }
 }
 ?>
@@ -57,8 +61,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container d-flex justify-content-center py-4">
       <div class="card p-4 shadow-lg rounded-lg" style="width: 25rem">
         <h3 class="card-title">User Registration</h3>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" class="needs-validation"
-              novalidate>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data"
+              class="needs-validation" novalidate>
 
           <div class="form-group">
             <label for="name">Full Name</label>
@@ -82,9 +86,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="radio" id="female" name="gender" class="custom-control-input" value="female">
             <label class="custom-control-label" for="female">Female</label>
           </div>
-          <div class="custom-file mt-2">
+          <div class="custom-file mt-2 <?php echo (!empty($uploadError)) ? 'has-error' : ''; ?>">
             <input type="file" class="custom-file-input" id="pic" name="pic" required>
             <label class="custom-file-label" for="pic">Pick user photo</label>
+            <span class="form-text text-danger"><small><?php echo $uploadError; ?></small></span>
           </div>
           <button type="submit" class="btn btn-primary btn-block mt-3">Register User</button>
         </form>
