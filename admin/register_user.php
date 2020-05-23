@@ -128,6 +128,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="../assets/bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
     <script src="../js/form_validation.js"></script>
     <script src="../js/clear_form.js"></script>
+
+    <script>
+    $(document).ready(function() {
+      $('input[type="file"]').change(function(e) {
+        var filename = e.target.files[0].name;
+        $(".custom-file-label").textContent(filename);
+      });
+    });
+    </script>
   </body>
 
 </html>
