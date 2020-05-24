@@ -1,3 +1,14 @@
+<?php
+
+session_start();
+
+if (isset($_SESSION["admin_logged_In"]) || $_SESSION["admin_logged_in"] !== true) {
+  header("location: login.php");
+  exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 
