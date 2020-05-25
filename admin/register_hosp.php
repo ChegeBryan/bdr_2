@@ -27,6 +27,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $psw = password_hash($rnd_psw, PASSWORD_DEFAULT);
 
     if ($stmt->execute()) {
+      $_SESSION['hsp_res'] = "Registration Successful!";
+      $_SESSION['hsp_id'] = "Hospital Id: " . $hosp_id;
+      $_SESSION['hsp_psw'] = "Password : " . $rnd_psw;
       header("location: register_hosp.php");
     } else {
       header("location: ../error.php");
@@ -61,6 +64,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </nav>
     <div class="container d-flex justify-content-center py-4">
       <div class="card p-4 shadow-lg rounded-lg" style="width: 25rem">
+
+        <?php
+      if (isset($_SESSION['hsp_res']) && !empty($_SESSION['hsp_res'])) {
+        echo <<<ALERT
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {$_SESSION['hsp_res']}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="alert alert-info alert-dismissible fade show" role="alert">
+                {$_SESSION['hsp_id']}
+                <br/>
+                {$_SESSION['hsp_psw']}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            ALERT;
+      }
+      ?>
         <h3 class="card-title">Hospital Registration</h3>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" class="needs-validation"
               novalidate>
