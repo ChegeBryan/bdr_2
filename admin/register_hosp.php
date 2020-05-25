@@ -7,6 +7,33 @@ if (isset($_SESSION["admin_logged_In"]) || $_SESSION["admin_logged_in"] !== true
   exit;
 }
 
+require_once '../includes/config.php';
+
+$hospname = $hosplocation = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+  $rnd_hsp = "H-" . mt_rand();
+  $rnd_psw = mt_rand();
+
+  $sql = "INSERT INTO bdr_hospital (name, location, hosp_id, password) VALUES (?, ?, ?, ?)";
+
+  if ($stmt = $conn->prepare($sql)) {
+    $stmt->bind_param("ssss", $hospname, $hosplocation, $hosp_id, $psw);
+
+    $hospname = trim($_POST['hospname']);
+    $hosplocation = trim($_POST['hosplocation']);
+    $hosp_id = $rnd_hsp;
+    $psw = password_hash($rnd_psw, PASSWORD_DEFAULT);
+
+    if ($stmt->execute()) {
+      header("location: register_hosp.php");
+    } else {
+      header("location: ../error.php");
+    }
+    $stmt->close();
+  }
+}
 ?>
 
 <!DOCTYPE html>
