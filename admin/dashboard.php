@@ -57,7 +57,7 @@ if (isset($_SESSION["admin_logged_In"]) || $_SESSION["admin_logged_in"] !== true
       <div class="card shadow-lg rounded-lg ml-2 mb-2" style="width: 18rem;">
         <i class="fa fa-suitcase fa-5x text-center text-secondary py-4"></i>
         <div class="card-body">
-          <a href="#" class="btn btn-secondary btn-block stretched-link">Register Company</a>
+          <a href="register_cmp.php" class="btn btn-secondary btn-block stretched-link">Register Company</a>
         </div>
       </div>
     </div>
