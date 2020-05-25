@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $sql = "INSERT INTO bdr_school (name, location, level, sch_id, password) VALUES (?, ?, ?, ?, ?)";
 
   if ($stmt = $conn->prepare($sql)) {
-    $stmt->bind_param("sssss", $schname, $schlocation, $sch_id, $level, $psw);
+    $stmt->bind_param("sssss", $schname, $schlocation, $level, $sch_id, $psw);
 
     $schname = trim($_POST['schname']);
     $schlocation = trim($_POST['schlocation']);
