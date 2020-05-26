@@ -6,6 +6,34 @@ if (isset($_SESSION["hospital_logged_In"]) || $_SESSION["hospital_logged_in"] !=
   header("location: login.php");
   exit;
 }
+
+require_once '../includes/config.php';
+
+$diagnosis = $diagnosis = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (isset($_GET['hospital']) && isset($_GET['user'])) {
+    $sql = "INSERT INTO bdr_health_information (hospital, user, diagnosis, medication) VALUES (?, ?, ?, ?)";
+
+    if ($stmt = $conn->prepare($sql)) {
+      $stmt->bind_param("iiss", $hospital, $user, $diagnosis, $medication);
+
+      $hospital = $_GET['hospital'];
+      $user = $_GET['user'];
+      $diagnosis = trim($_POST['diagnosis']);
+      $medication = trim($_POST['medication']);
+
+      if ($stmt->execute()) {
+        header("location: view_usr.php?hospital=" . $_GET['hospital'] . "&user=" . $_GET['user']);
+      } else {
+        header("location: ../error.php");
+      }
+      $stmt->close();
+    }
+  } else {
+    header("location: ../error.php");
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -23,8 +51,8 @@ if (isset($_SESSION["hospital_logged_In"]) || $_SESSION["hospital_logged_in"] !=
     <div class="container d-flex justify-content-center mt-5">
       <div class="card p-4 shadow-lg rounded-lg" style="width: 400px;">
         <h4>Add health Details</h4>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="needs-validation" method="POST"
-              novalidate>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . '?hospital=' . $_GET['hospital'] . '&user=' . $_GET['user']; ?>"
+              class="needs-validation" method="POST" novalidate>
           <div class="form-group">
             <label for="diagnosis" class="text-secondary font-weight-bold">Patient Diagnosis</label>
             <textarea rows="3" class="form-control overflow-hidden" id="diagnosis" placeholder="Patient Diagnosis"
