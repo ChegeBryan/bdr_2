@@ -50,7 +50,7 @@
         <i class="fa fa-5x fa-h-square text-center text-secondary py-4"></i>
         <div class="card-body">
           <h5 class="card-title text-center">Hospital</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Functions</h6>
+          <h6 class="card-subtitle mb-2 text-muted font-weight-bold">Functions</h6>
           <p class="card-text">View user health history</p>
           <p class="card-text">Edit user health record</p>
           <p class="card-text">Add user health</p>
@@ -60,8 +60,8 @@
       <div class="card shadow-lg rounded-lg ml-2 mb-2" style="width: 18rem;">
         <i class="fa fa-mortar-board fa-5x text-center text-secondary py-4"></i>
         <div class="card-body">
-          <h5 class="card-title text-center">School</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Functions</h6>
+          <h5 class="card-title text-center font-weight-bold">School</h5>
+          <h6 class=" card-subtitle mb-2 text-muted">Functions</h6>
           <p class="card-text py-2">View user academics</p>
           <p class="card-text py-2">Add user academics</p>
           <a href="school/login.php" class="btn btn-secondary stretched-link btn-block">Dashboard</a>
@@ -71,8 +71,8 @@
         <i class="fa fa-suitcase fa-5x text-center text-secondary py-4"></i>
         <div class="card-body ">
           <h5 class="card-title text-center">Company</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Functions</h6>
-          <p class="card-text">View user work history</p>
+          <h6 class="card-subtitle mb-2 text-muted font-weight-bold">Functions</h6>
+          <p class=" card-text">View user work history</p>
           <p class="card-text">Add user work details</p>
           <p class="card-text">View user academics</p>
           <a href="company/login.php" class="btn btn-secondary stretched-link btn-block">Dashboard</a>
