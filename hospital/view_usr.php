@@ -102,7 +102,7 @@ require_once '../includes/config.php';
           <tbody>
             <?php
           if (isset($_GET["user"])) {
-            $sql = "SELECT entered_on, name, diagnosis, medication, healed
+            $sql = "SELECT bdr_health_information.id, entered_on, name, diagnosis, medication, healed
                     FROM bdr_health_information
                     JOIN bdr_hospital
                     ON bdr_health_information.hospital=bdr_hospital.id
@@ -125,7 +125,7 @@ require_once '../includes/config.php';
                     echo "<td>" . $row["diagnosis"] . "</td>";
                     echo "<td>" . $row['medication'] . "</td>";
                     echo "<td>" . ($row['healed'] == 0 ? "No" : "Yes") . "</td>";
-                    echo "<td><a class='btn btn-info btn-sm' href='update_health_info.php?hospital=" . $_GET['hospital'] . "&user=" . $_GET['user'] . "'>Update Info</a></td>";
+                    echo "<td><a class='btn btn-info btn-sm' href='update_health_info.php?hospital=" . $_GET['hospital'] . "&user=" . $_GET['user'] . "&record=" . $row['id'] . "'>Update Info</a></td>";
                     echo "</tr>";
                   }
                 } else {
