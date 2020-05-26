@@ -129,7 +129,7 @@ require_once '../includes/config.php';
                     echo "</tr>";
                   }
                 } else {
-                  echo "<tr><td colspan='5'>No health information entered yet.</td></tr>";
+                  echo "<tr><td colspan='6'>No health information entered yet.</td></tr>";
                 }
               }
               $stmt->close();
