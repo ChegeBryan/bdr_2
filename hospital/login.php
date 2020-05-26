@@ -1,3 +1,66 @@
+<?php
+
+session_start();
+
+require_once "../includes/config.php";
+
+$h_id = $password = "";
+$h_id_err = $password_err = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+  if (empty(trim($_POST["h_id"]))) {
+    $h_id_err = "Please enter hospital id.";
+  } else {
+    $h_id = trim($_POST["h_id"]);
+  }
+
+  if (empty(trim($_POST["password"]))) {
+    $password_err = "Please enter your password.";
+  } else {
+    $password = trim($_POST["password"]);
+  }
+
+  if (empty($h_id_err) && empty($password_err)) {
+    $sql = "SELECT id, hosp_id, password
+    FROM bdr_hospital
+    WHERE hosp_id = ?";
+
+    if ($stmt = $conn->prepare($sql)) {
+
+      $stmt->bind_param("s", $identity);
+      $identity = $h_id;
+      if ($stmt->execute()) {
+        $stmt->store_result();
+
+        if ($stmt->num_rows == 1) {
+          $stmt->bind_result($id, $hosp_id, $hashed_password);
+
+          if ($stmt->fetch()) {
+            if (password_verify($password, $hashed_password)) {
+
+              $_SESSION["hospital_logged_in"] = true;
+              $_SESSION["hosp_id"] = $id;
+              $_SESSION["hosp"] = $hosp_id;
+
+              header("location: dashboard.php?hospital=" . $_SESSION['hosp_id']);
+            } else {
+              $password_err = "The password you entered was not valid.";
+            }
+          }
+        } else {
+          $h_id_err = "No account found with that username.";
+        }
+      } else {
+        header("location: ../error.php");
+      }
+      $stmt->close();
+    }
+  }
+  $conn->close();
+}
+?>
+
 <!DOCTYPE html>
 <html>
 
