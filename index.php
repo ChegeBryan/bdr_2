@@ -54,7 +54,7 @@
           <p class="card-text">View user health history</p>
           <p class="card-text">Edit user health record</p>
           <p class="card-text">Add user health</p>
-          <a href="#" class="btn btn-secondary stretched-link">Dashboard</a>
+          <a href="hospital/login.php" class="btn btn-secondary stretched-link">Dashboard</a>
         </div>
       </div>
       <div class="card shadow-lg rounded-lg ml-2 mb-2" style="width: 18rem;">
