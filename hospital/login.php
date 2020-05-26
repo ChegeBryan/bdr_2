@@ -92,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="h_id" class="text-secondary font-weight-bold">Identity</label>
             <input type="text" class="form-control" id="h_id" placeholder="Hospital identity" name="h_id"
                    value="<?php echo $h_id; ?>" required>
-            <span class="form-text text-danger"><small><?php echo $username_err; ?></small></span>
+            <span class="form-text text-danger"><small><?php echo $h_id_err; ?></small></span>
           </div>
           <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
             <label for="psw" class="text-secondary font-weight-bold">Password</label>
