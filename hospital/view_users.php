@@ -36,7 +36,7 @@ require_once '../includes/config.php';
           <tbody>
             <?php
           if (isset($_GET["hospital"])) {
-            $sql = "SELECT fullname, gender, pic, userid
+            $sql = "SELECT fullname, gender, pic, userid, user
                     FROM bdr_health_information
                     JOIN bdr_users
                     ON bdr_health_information.user = bdr_users.id
@@ -57,6 +57,7 @@ require_once '../includes/config.php';
                     echo "<td><img src='" . $row["pic"] . "' class='img-fluid' height='50px' width='50px'></td>";
                     echo "<td>" . $row['fullname'] . "</td>";
                     echo "<td>" . $row['gender'] . "</td>";
+                    echo "<td><a href='view_usr.php?hospital=" . $_GET['hospital'] . "&user=" . $row['user'] . "' class='btn btn-info btn-sm'>View</a></td>";
                     echo "</tr>";
                   }
                 } else {
