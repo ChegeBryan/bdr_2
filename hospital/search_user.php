@@ -35,7 +35,7 @@ if (isset($_SESSION["hospital_logged_In"]) || $_SESSION["hospital_logged_in"] !=
         </div>
         <div class="col-sm-8">
           <div class="table-responsive">
-            <table class="table table-striped table-hover">
+            <table class="table table-striped table-hover table-sm">
               <thead class="text-secondary">
                 <tr>
                   <th scope="col">Reg. No.</th>
