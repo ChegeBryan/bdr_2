@@ -54,7 +54,7 @@
           <p class="card-text">View user health history</p>
           <p class="card-text">Edit user health record</p>
           <p class="card-text">Add user health</p>
-          <a href="hospital/login.php" class="btn btn-secondary stretched-link">Dashboard</a>
+          <a href="hospital/login.php" class="btn btn-secondary stretched-link btn-block">Dashboard</a>
         </div>
       </div>
       <div class="card shadow-lg rounded-lg ml-2 mb-2" style="width: 18rem;">
@@ -64,7 +64,7 @@
           <h6 class="card-subtitle mb-2 text-muted">Functions</h6>
           <p class="card-text py-2">View user academics</p>
           <p class="card-text py-2">Add user academics</p>
-          <a href="school/login.php" class="btn btn-secondary stretched-link">Dashboard</a>
+          <a href="school/login.php" class="btn btn-secondary stretched-link btn-block">Dashboard</a>
         </div>
       </div>
       <div class="card shadow-lg rounded-lg ml-2 mb-2" style="width: 18rem;">
@@ -75,7 +75,7 @@
           <p class="card-text">View user work history</p>
           <p class="card-text">Add user work details</p>
           <p class="card-text">View user academics</p>
-          <a href="company/login.php" class="btn btn-secondary stretched-link">Dashboard</a>
+          <a href="company/login.php" class="btn btn-secondary stretched-link btn-block">Dashboard</a>
         </div>
       </div>
     </div>
