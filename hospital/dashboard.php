@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (isset($_SESSION["hospital_logged_In"]) || $_SESSION["hospital_logged_in"] !== true) {
+  header("location: login.php");
+  exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
