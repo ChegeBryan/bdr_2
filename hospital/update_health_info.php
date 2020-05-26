@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ?>
       <div class="card p-4 shadow-lg rounded-lg" style="width: 400px;">
         <h4>Update health Details</h4>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . '?hospital=' . $_GET['hospital'] . '&user=' . $_GET['user'] . '$record=' . $_GET['record']; ?>"
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . '?hospital=' . $_GET['hospital'] . '&user=' . $_GET['user'] . '&record=' . $_GET['record']; ?>"
               class="needs-validation" method="POST" novalidate>
           <div class="form-group">
             <label for="diagnosis" class="text-secondary font-weight-bold">Patient Diagnosis</label>
