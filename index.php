@@ -75,7 +75,7 @@
           <p class="card-text">View user work history</p>
           <p class="card-text">Add user work details</p>
           <p class="card-text">View user academics</p>
-          <a href="#" class="btn btn-secondary stretched-link">Dashboard</a>
+          <a href="company/login.php" class="btn btn-secondary stretched-link">Dashboard</a>
         </div>
       </div>
     </div>
