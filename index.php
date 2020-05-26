@@ -64,7 +64,7 @@
           <h6 class="card-subtitle mb-2 text-muted">Functions</h6>
           <p class="card-text py-2">View user academics</p>
           <p class="card-text py-2">Add user academics</p>
-          <a href="#" class="btn btn-secondary stretched-link">Dashboard</a>
+          <a href="school/login.php" class="btn btn-secondary stretched-link">Dashboard</a>
         </div>
       </div>
       <div class="card shadow-lg rounded-lg ml-2 mb-2" style="width: 18rem;">
