@@ -34,7 +34,39 @@ require_once '../includes/config.php';
             </tr>
           </thead>
           <tbody>
+            <?php
+          if (isset($_GET["hospital"])) {
+            $sql = "SELECT fullname, gender, pic, userid
+                    FROM bdr_health_information
+                    JOIN bdr_users
+                    ON bdr_health_information.user = bdr_users.id
+                    WHERE bdr_health_information.hospital = ?";
 
+            if ($stmt = $conn->prepare($sql)) {
+              $stmt->bind_param("i", $hosp);
+
+              $hosp = $_GET["hospital"];
+
+              if ($stmt->execute()) {
+                $result = $stmt->get_result();
+
+                if ($result->num_rows > 0) {
+                  while ($row = $result->fetch_array()) {
+                    echo "<tr>";
+                    echo "<td>" . $row["userid"] . "</td>";
+                    echo "<td><img src='" . $row["pic"] . "' class='img-fluid' height='50px' width='50px'></td>";
+                    echo "<td>" . $row['fullname'] . "</td>";
+                    echo "<td>" . $row['gender'] . "</td>";
+                    echo "</tr>";
+                  }
+                } else {
+                  echo "<tr><td colspan='5'>No health information entered yet.</td></tr>";
+                }
+              }
+              $stmt->close();
+            }
+          }
+          ?>
           </tbody>
         </table>
       </div>
