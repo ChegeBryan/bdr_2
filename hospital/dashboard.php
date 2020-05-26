@@ -31,7 +31,7 @@ if (isset($_SESSION["hospital_logged_In"]) || $_SESSION["hospital_logged_in"] !=
               <p class="card-text">View user details</p>
               <p class="card-text">Add user health</p>
               <p class="card-text">Update user health</p>
-              <a href="#" class="btn btn-primary stretched-link btn-block">User Directory</a>
+              <a href="search_user.php" class="btn btn-primary stretched-link btn-block">User Directory</a>
             </div>
           </div>
         </div>

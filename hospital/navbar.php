@@ -10,7 +10,7 @@
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link text-white" href="#">Search User</a>
+        <a class="nav-link text-white" href="search_user.php">Search User</a>
       </li>
       <li class="nav-item">
         <a class="nav-link text-white" href="#">View users</a>
