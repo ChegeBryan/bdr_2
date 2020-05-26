@@ -2,6 +2,11 @@
 
 session_start();
 
+if (isset($_SESSION["hospital_logged_in"]) && $_SESSION["hospital_logged_in"] === true) {
+  header("location: dashboard.php?hospital=" . $_SESSION['hosp_id']);
+  exit;
+}
+
 require_once "../includes/config.php";
 
 $h_id = $password = "";
