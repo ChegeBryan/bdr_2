@@ -13,9 +13,10 @@
         <a class="nav-link text-white" href="search_user.php">Search User</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="#">View users</a>
+        <a class="nav-link text-white" href="<?php echo 'view_users.php?hospital=' . $_SESSION['hosp_id'] ?>">View
+          users</a>
       </li>
-      <li class="nav-item">
+      <li class=" nav-item">
         <a class="nav-link text-white" href="#">Logout</a>
       </li>
     </ul>
