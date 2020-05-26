@@ -41,10 +41,10 @@ if (isset($_SESSION["hospital_logged_In"]) || $_SESSION["hospital_logged_in"] !=
 
 
 
-    <script src="assets/js/jquery.min.js"></script>
+    <script src="../assets/js/jquery.min.js"></script>
 
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
+    <script src="../assets/js/popper.min.js"></script>
+    <script src="../assets/bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
 
   </body>
 
