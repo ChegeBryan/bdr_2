@@ -34,12 +34,24 @@ if (isset($_SESSION["hospital_logged_In"]) || $_SESSION["hospital_logged_in"] !=
           <p class="text-muted">Enter user registration to search for the user in the users directory.</p>
         </div>
         <div class="col-sm-8">
-
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="text-secondary">
+                <tr>
+                  <th scope="col">Reg. No.</th>
+                  <th scope="col">User Image</th>
+                  <th scope="col">Full Name</th>
+                  <th scope="col">Gender</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="results">
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-
-
 
     <script src="../assets/js/jquery.min.js"></script>
 
