@@ -20,6 +20,27 @@ if (isset($_SESSION["hospital_logged_In"]) || $_SESSION["hospital_logged_in"] !=
 
     <div class="container py-3" style="width: 1024px">
       <div class="row">
+        <?php
+      if (isset($_GET["user"])) {
+        $sql = "SELECT fullname, userid, health, pic, gender, dob FROM bdr_users WHERE id = ?";
+        if ($stmt = $conn->prepare($sql)) {
+          $stmt->bind_param("i", $id);
+          $id = trim($_GET["user"]);
+          if ($stmt->execute()) {
+            $result = $stmt->get_result();
+
+            if ($result->num_rows == 1) {
+              $row = $result->fetch_array(MYSQLI_ASSOC);
+            } else {
+              echo "Something went wrong.";
+              exit();
+            }
+          } else {
+            header('location: ../error.php');
+          }
+        }
+      }
+      ?>
         <div class="col-sm-5">
         </div>
         <div class="col-sm-9">
