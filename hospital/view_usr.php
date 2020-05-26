@@ -78,6 +78,9 @@ require_once '../includes/config.php';
                   </tr>
                 </table>
               </div>
+              <a href="<?php echo 'add_health_info.php?hospital=' . $_GET['hospital'] . '&user=' . $_GET['user'] ?>"
+                 class="btn btn-info">Add
+                health information</a>
             </div>
           </div>
         </div>
