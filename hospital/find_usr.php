@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require_once '../includes/config.php';
 
@@ -13,6 +14,7 @@ if (!empty($_POST["user_reg"])) {
         <td><img src='{$row["pic"]}' class='img-fluid' height='50px' width='50px'></td>
         <td>{$row["fullname"]}</td>
         <td>{$row["gender"]}</td>
+        <td><a href="view_usr.php?hospital={$_SESSION['hosp_id']}&user={$row['id']}" class="btn btn-info btn-sm">View</a></td>
       </tr>
       ROW;
     }
