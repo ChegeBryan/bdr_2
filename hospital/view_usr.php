@@ -88,7 +88,7 @@ require_once '../includes/config.php';
 
     <div class="container" style="width: 1024px">
       <div class="table-responsive">
-        <table class="table table-striped table-hover table-sm">
+        <table class="table table-striped table-hover table-bordered table-sm">
           <thead class="text-secondary">
             <tr>
               <th scope="col">Entered on</th>
