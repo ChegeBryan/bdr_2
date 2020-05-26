@@ -22,6 +22,7 @@ require_once '../includes/config.php';
     <?php include 'navbar.php'; ?>
 
     <div class="container py-3" style="width: 1024px">
+      <h4 class="text-secondary text-capitalize text-center">User served in this hospital</h4>
       <div class="table-responsive">
         <table class="table table-striped table-hover table-bordered">
           <thead class="text-secondary">
