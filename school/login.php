@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = trim($_POST["password"]);
   }
 
-  if (empty($h_id_err) && empty($password_err)) {
+  if (empty($sch_id_err) && empty($password_err)) {
     $sql = "SELECT id, sch_id, password
     FROM bdr_school
     WHERE sch_id = ?";
@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
           }
         } else {
-          $h_id_err = "No account found with that school id found.";
+          $comp_id_err = "No account found with that school id found.";
         }
       } else {
         header("location: ../error.php");
