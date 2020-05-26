@@ -125,7 +125,7 @@ require_once '../includes/config.php';
                     echo "<td>" . $row["diagnosis"] . "</td>";
                     echo "<td>" . $row['medication'] . "</td>";
                     echo "<td>" . ($row['healed'] == 0 ? "No" : "Yes") . "</td>";
-                    echo "<td><a class='btn btn-info btn-sm' href='update_health_info.php?hospital='" . $_GET['hospital'] . "&user=" . $_GET['user'] . ">Update Info</a></td>";
+                    echo "<td><a class='btn btn-info btn-sm' href='update_health_info.php?hospital=" . $_GET['hospital'] . "&user=" . $_GET['user'] . "'>Update Info</a></td>";
                     echo "</tr>";
                   }
                 } else {
