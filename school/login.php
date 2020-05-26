@@ -2,6 +2,11 @@
 
 session_start();
 
+if (isset($_SESSION["school_logged_in"]) && $_SESSION["school_logged_in"] === true) {
+  header("location: dashboard.php?school=" . $_SESSION['sch_id']);
+  exit;
+}
+
 require_once "../includes/config.php";
 
 $sch_id = $password = "";
