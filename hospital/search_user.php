@@ -46,6 +46,9 @@ if (isset($_SESSION["hospital_logged_In"]) || $_SESSION["hospital_logged_in"] !=
                 </tr>
               </thead>
               <tbody id="results">
+                <tr>
+                  <td colspan='5' class='text-info'>Type into the search field to look for user.</td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -57,6 +60,19 @@ if (isset($_SESSION["hospital_logged_In"]) || $_SESSION["hospital_logged_in"] !=
 
     <script src="../assets/js/popper.min.js"></script>
     <script src="../assets/bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
+
+    <script>
+    $(document).on('keyup', '#user_reg', function() {
+      $.ajax({
+        url: "find_usr.php",
+        method: "POST",
+        data: $("#user_reg").serialize(),
+        success: function(data) {
+          $("#results").html(data);
+        }
+      });
+    });
+    </script>
 
   </body>
 
