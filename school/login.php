@@ -93,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h4>School login</h4>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="needs-validation" method="POST"
               novalidate>
-          <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+          <div class="form-group <?php echo (!empty($sch_id_err)) ? 'has-error' : ''; ?>">
             <label for="sch_id" class="text-secondary font-weight-bold">Identity</label>
             <input type="text" class="form-control" id="sch_id" placeholder="School identity" name="sch_id"
                    value="<?php echo $sch_id; ?>" required>
