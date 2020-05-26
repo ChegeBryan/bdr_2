@@ -101,36 +101,38 @@ require_once '../includes/config.php';
           </thead>
           <tbody>
             <?php
-          $sql = "SELECT entered_on, name, diagnosis, medication, healed
+          if (isset($_GET["user"])) {
+            $sql = "SELECT entered_on, name, diagnosis, medication, healed
                     FROM bdr_health_information
                     JOIN bdr_hospital
                     ON bdr_health_information.hospital=bdr_hospital.id
                     WHERE bdr_health_information.user= ?
                     ORDER BY bdr_health_information.id DESC";
 
-          if ($stmt = $conn->prepare($sql)) {
-            $stmt->bind_param("i", $user);
+            if ($stmt = $conn->prepare($sql)) {
+              $stmt->bind_param("i", $user);
 
-            $user = $_GET["user"];
+              $user = $_GET["user"];
 
-            if ($stmt->execute()) {
-              $result = $stmt->get_result();
+              if ($stmt->execute()) {
+                $result = $stmt->get_result();
 
-              if ($result->num_rows > 0) {
-                while ($row = $result->fetch_array()) {
-                  echo "<tr>";
-                  echo "<td>" . date_format(date_create($row['entered_on']), "d-M-Y") . "</td>";
-                  echo "<td>" . $row["name"] . "</td>";
-                  echo "<td>" . $row["diagnosis"] . "</td>";
-                  echo "<td>" . $row['medication'] . "</td>";
-                  echo "<td>" . ($row['healed'] == 0 ? "No" : "Yes") . "</td>";
-                  echo "</tr>";
+                if ($result->num_rows > 0) {
+                  while ($row = $result->fetch_array()) {
+                    echo "<tr>";
+                    echo "<td>" . date_format(date_create($row['entered_on']), "d-M-Y") . "</td>";
+                    echo "<td>" . $row["name"] . "</td>";
+                    echo "<td>" . $row["diagnosis"] . "</td>";
+                    echo "<td>" . $row['medication'] . "</td>";
+                    echo "<td>" . ($row['healed'] == 0 ? "No" : "Yes") . "</td>";
+                    echo "</tr>";
+                  }
+                } else {
+                  echo "<tr><td colspan='5'>No health information entered yet.</td></tr>";
                 }
-              } else {
-                echo "<tr><td colspan='5'>No health information entered yet.</td></tr>";
               }
+              $stmt->close();
             }
-            $stmt->close();
           }
           ?>
           </tbody>
