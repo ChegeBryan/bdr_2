@@ -36,7 +36,7 @@ require_once '../includes/config.php';
           <tbody>
             <?php
           if (isset($_GET["hospital"])) {
-            $sql = "SELECT fullname, gender, pic, userid, user
+            $sql = "SELECT DISTINCT fullname, gender, pic, userid, user
                     FROM bdr_health_information
                     JOIN bdr_users
                     ON bdr_health_information.user = bdr_users.id
