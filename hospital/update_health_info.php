@@ -8,6 +8,31 @@ if (isset($_SESSION["hospital_logged_In"]) || $_SESSION["hospital_logged_in"] !=
 }
 
 require_once '../includes/config.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (isset($_GET['hospital']) && isset($_GET['user'])) {
+    $sql = "UPDATE bdr_health_information SET diagnosis = ?, medication = ?, healed = ? WHERE id = ?";
+
+    if ($stmt = $conn->prepare($sql)) {
+      $stmt->bind_param("ssii", $new_diagnosis, $new_medication, $healed, $record);
+
+      $healed = $_POST['status'];
+      $record = $_GET['record'];
+      $new_diagnosis = trim($_POST['diagnosis']);
+      $new_medication = trim($_POST['medication']);
+
+      if ($stmt->execute()) {
+        header("location: view_usr.php?hospital=" . $_GET['hospital'] . "&user=" . $_GET['user']);
+      } else {
+        header("location: ../error.php");
+      }
+      $stmt->close();
+    }
+  } else {
+    header("location: ../error.php");
+  }
+}
+
 ?>
 
 <!DOCTYPE html>
