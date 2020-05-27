@@ -74,6 +74,16 @@ require_once '../includes/config.php';
               </tr>
             </table>
           </div>
+          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . '?school=' . $_GET['school'] . '&user=' . $_GET['user']; ?>"
+                method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+            <div class="custom-file mt-2 <?php echo (!empty($uploadError)) ? 'has-error' : ''; ?>">
+              <input type="file" class="custom-file-input" id="cert" name="cert" required>
+              <label class="custom-file-label" for="cert">Pick certificate</label>
+              <span class="form-text text-warning"><small>NB: Upload PDF files only.</small></span>
+              <span class="form-text text-danger"><small><?php echo $uploadError; ?></small></span>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Upload Certificate</button>
+          </form>
         </div>
       </div>
     </div>
