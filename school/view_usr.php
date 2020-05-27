@@ -133,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <div class="container" style="width: 1024px">
       <div class="table-responsive">
-        <table class="table table-striped table-hover table-bordered">
+        <table class="table table-striped table-hover table-bordered table-sm">
           <thead class="text-secondary">
             <tr>
               <th scope="col">Entered on</th>
@@ -166,6 +166,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     echo "<td>" . date_format(date_create($row['entered_on']), "d-M-Y") . "</td>";
                     echo "<td>" . $row["name"] . "</td>";
                     echo "<td>" . $row["level"] . "</td>";
+                    echo "<td><a class='btn btn-info btn-sm' href='" . $row['certificate'] . "' target='_blank'>View</a></td>";
                     echo "</tr>";
                   }
                 } else {
