@@ -8,6 +8,49 @@ if (isset($_SESSION["school_logged_In"]) || $_SESSION["school_logged_in"] !== tr
 
 require_once '../includes/config.php';
 
+$uploadOk = 0;
+$uploadError = "";
+
+if (isset($_FILES['cert'])) {
+  if ($_FILES['cert']['type'] == "application/pdf") {
+    $source_file = $_FILES['cert']['tmp_name'];
+    $dest_file = "../certificates/" . $_FILES['cert']['name'];
+
+    if (file_exists($dest_file)) {
+      $uploadError = "The file name already exists!!";
+      $uploadOk = 0;
+    } else {
+      move_uploaded_file($source_file, $dest_file);
+      $uploadOk = 1;
+    }
+  } else {
+    if ($_FILES['cert']['type'] != "application/pdf") {
+      $uploadError = "Invalid  file extension, should be pdf !!";
+      $uploadOk = 0;
+    }
+  }
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  if ($uploadOk == 1) {
+    $sql = "INSERT INTO bdr_academics (school, user, certificate) VALUES (?, ?, ?)";
+
+    if ($stmt = $conn->prepare($sql)) {
+      $stmt->bind_param("iis", $sch, $usr, $cert);
+
+      $sch = $_GET['school'];
+      $usr = $_GET['user'];
+      $cert = $dest_file;
+
+      if ($stmt->execute()) {
+        header("location: view_usr.php?school=" . $_GET['school'] . "&user=" . $_GET['user']);
+      } else {
+        header("location: ../error.php");
+      }
+      $stmt->close();
+    }
+  }
+}
 ?>
 
 <!DOCTYPE html>
