@@ -60,6 +60,7 @@ if (isset($_SESSION["school_logged_In"]) || $_SESSION["school_logged_in"] !== tr
 
     <script src="../assets/js/popper.min.js"></script>
     <script src="../assets/bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
+    <script src="../js/find_usr.js"></script>
   </body>
 
 </html>
