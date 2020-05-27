@@ -74,15 +74,16 @@ require_once '../includes/config.php';
               </tr>
             </table>
           </div>
+          <a href="#" class="btn btn-info">Add work information</a>
         </div>
       </div>
-    </div>
 
-    <script src="../assets/js/jquery.min.js"></script>
+      <script src="../assets/js/jquery.min.js">
+      </script>
 
-    <script src="../assets/js/popper.min.js"></script>
-    <script src="../assets/bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
-    <script src="../js/clear_form.js"></script>
+      <script src="../assets/js/popper.min.js"></script>
+      <script src="../assets/bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
+      <script src="../js/clear_form.js"></script>
 
   </body>
 
