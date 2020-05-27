@@ -44,7 +44,8 @@ if (isset($_SESSION["hospital_logged_In"]) || $_SESSION["hospital_logged_in"] !=
               <p class="card-text">View users registered who have had their health information registered with the
                 hospital before.</p>
               <p class="card-text">View user details</p>
-              <a href="#" class="btn btn-primary stretched-link btn-block">View Users</a>
+              <a href="<?php echo 'view_users.php?hospital=' . $_SESSION['hosp_id'] ?>"
+                 class="btn btn-primary stretched-link btn-block">View Users</a>
             </div>
           </div>
         </div>
