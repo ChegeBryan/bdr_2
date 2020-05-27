@@ -11,6 +11,14 @@ SET time_zone = "+00:00";
 CREATE DATABASE IF NOT EXISTS `bdr_system` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `bdr_system`;
 
+CREATE TABLE `bdr_academics` (
+  `id` int(11) NOT NULL,
+  `school` int(11) NOT NULL,
+  `user` int(11) NOT NULL,
+  `certificate` text NOT NULL,
+  `entered_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 CREATE TABLE `bdr_admin` (
   `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
@@ -24,6 +32,16 @@ CREATE TABLE `bdr_company` (
   `sector` varchar(64) NOT NULL,
   `comp_id` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `bdr_health_information` (
+  `id` int(11) NOT NULL,
+  `hospital` int(11) NOT NULL,
+  `user` int(11) NOT NULL,
+  `diagnosis` text NOT NULL,
+  `medication` text NOT NULL,
+  `healed` int(11) NOT NULL DEFAULT '0',
+  `entered_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `bdr_hospital` (
@@ -54,12 +72,31 @@ CREATE TABLE `bdr_users` (
   `dob` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `bdr_work_information` (
+  `id` int(11) NOT NULL,
+  `company` int(11) NOT NULL,
+  `user` int(11) NOT NULL,
+  `position` varchar(255) NOT NULL,
+  `remarks` text NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `entered_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+ALTER TABLE `bdr_academics`
+  ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `bdr_admin`
   ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `bdr_company`
   ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `bdr_health_information`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `hsp_id_fk` (`hospital`),
+  ADD KEY `usr_id_fk` (`user`);
 
 ALTER TABLE `bdr_hospital`
   ADD PRIMARY KEY (`id`);
@@ -70,11 +107,20 @@ ALTER TABLE `bdr_school`
 ALTER TABLE `bdr_users`
   ADD PRIMARY KEY (`id`);
 
+ALTER TABLE `bdr_work_information`
+  ADD PRIMARY KEY (`id`);
+
+
+ALTER TABLE `bdr_academics`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `bdr_admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `bdr_company`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `bdr_health_information`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `bdr_hospital`
@@ -85,6 +131,14 @@ ALTER TABLE `bdr_school`
 
 ALTER TABLE `bdr_users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `bdr_work_information`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+
+ALTER TABLE `bdr_health_information`
+  ADD CONSTRAINT `hsp_id_fk` FOREIGN KEY (`hospital`) REFERENCES `bdr_hospital` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `usr_id_fk` FOREIGN KEY (`user`) REFERENCES `bdr_users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

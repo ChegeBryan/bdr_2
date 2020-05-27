@@ -102,7 +102,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           </div>
           <div class="form-group">
             <label for="dob">Birth date</label>
-            <input type="date" class="form-control" name="dob" id="dob" max="<?php echo date("Y-m-d"); ?>" required>
+            <input type="date" class="form-control" name="dob" id="dob" max="<?php echo date("Y-m-d"); ?>"
+                   onkeydown="return false" required>
           </div>
           <div class="form-group">
             <label for="health">Known Health Conditions</label>
