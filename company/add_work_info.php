@@ -9,28 +9,36 @@ if (isset($_SESSION["company_logged_In"]) || $_SESSION["company_logged_in"] !== 
 
 require_once '../includes/config.php';
 
-$position = $remarks = "";
+$position = $remarks = $date_error = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (isset($_GET['company']) && isset($_GET['user'])) {
-    $sql = "INSERT INTO bdr_work_information (company, user, position, remarks, start_date, end_date) VALUES (?, ?, ?, ?, ?, ?)";
 
-    if ($stmt = $conn->prepare($sql)) {
-      $stmt->bind_param("iissss", $comp, $usr, $pos, $remarks, $start, $end);
+    $position = trim($_POST['position']);
+    $remarks = trim($_POST['remarks']);
 
-      $comp = $_GET['company'];
-      $usr = $_GET['user'];
-      $pos = trim($_POST['position']);
-      $remarks = trim($_POST['remarks']);
-      $start = $_POST['start_date'];
-      $end = $_POST['end_date'];
+    if ($_POST['start_date'] > $_POST['end_date']) {
+      $date_error = "Start date cannot be greater than end date.";
+    } else {
+      $sql = "INSERT INTO bdr_work_information (company, user, position, remarks, start_date, end_date) VALUES (?, ?, ?, ?, ?, ?)";
 
-      if ($stmt->execute()) {
-        header("location: view_usr.php?company=" . $_GET['company'] . "&user=" . $_GET['user']);
-      } else {
-        header("location: ../error.php");
+      if ($stmt = $conn->prepare($sql)) {
+        $stmt->bind_param("iissss", $comp, $usr, $pos, $remarks, $start, $end);
+
+        $comp = $_GET['company'];
+        $usr = $_GET['user'];
+        $pos = trim($_POST['position']);
+        $remarks = trim($_POST['remarks']);
+        $start = $_POST['start_date'];
+        $end = $_POST['end_date'];
+
+        if ($stmt->execute()) {
+          header("location: view_usr.php?company=" . $_GET['company'] . "&user=" . $_GET['user']);
+        } else {
+          header("location: ../error.php");
+        }
+        $stmt->close();
       }
-      $stmt->close();
     }
   } else {
     header("location: ../error.php");
@@ -66,10 +74,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                       placeholder="Company remarks on position worked at" name="remarks" style="resize: none"
                       required><?php echo $remarks; ?></textarea>
           </div>
-          <div class="form-group">
+          <div class="form-group <?php echo (!empty($date_error)) ? 'has-error' : ''; ?>">
             <label for="start_date">Started on</label>
             <input type="date" class="form-control" id="start_date" name="start_date"
                    max="<?php echo date("Y-m-d", strtotime('yesterday')); ?>" required>
+            <span class="form-text text-danger"><small><?php echo $date_error; ?></small></span>
+
           </div>
           <div class="form-group">
             <label for="end_date">Stopped on</label>
