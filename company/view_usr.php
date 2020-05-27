@@ -95,6 +95,42 @@ require_once '../includes/config.php';
             </tr>
           </thead>
           <tbody>
+            <?php
+          if (isset($_GET["user"])) {
+            $sql = "SELECT entered_on, name, position, remarks, start_date, end_date
+                    FROM bdr_work_information
+                    JOIN bdr_company
+                    ON bdr_work_information.company=bdr_company.id
+                    WHERE bdr_work_information.user= ?
+                    ORDER BY bdr_work_information.id DESC";
+
+            if ($stmt = $conn->prepare($sql)) {
+              $stmt->bind_param("i", $user);
+
+              $user = $_GET["user"];
+
+              if ($stmt->execute()) {
+                $result = $stmt->get_result();
+
+                if ($result->num_rows > 0) {
+                  while ($row = $result->fetch_array()) {
+                    echo "<tr>";
+                    echo "<td>" . date_format(date_create($row['entered_on']), "d-M-Y") . "</td>";
+                    echo "<td>" . $row["name"] . "</td>";
+                    echo "<td>" . $row["position"] . "</td>";
+                    echo "<td>" . $row['remarks'] . "</td>";
+                    echo "<td>" . date_format(date_create($row['start_date']), "d-M-Y") . "</td>";
+                    echo "<td>" . date_format(date_create($row['end_date']), "d-M-Y") . "</td>";
+                    echo "</tr>";
+                  }
+                } else {
+                  echo "<tr><td colspan='6'>No Work information entered yet.</td></tr>";
+                }
+              }
+              $stmt->close();
+            }
+          }
+          ?>
           </tbody>
         </table>
       </div>
