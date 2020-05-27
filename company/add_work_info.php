@@ -9,6 +9,33 @@ if (isset($_SESSION["company_logged_In"]) || $_SESSION["company_logged_in"] !== 
 
 require_once '../includes/config.php';
 
+$position = $remarks = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (isset($_GET['company']) && isset($_GET['user'])) {
+    $sql = "INSERT INTO bdr_work_information (company, user, position, remarks, start_date, end_date) VALUES (?, ?, ?, ?, ?, ?)";
+
+    if ($stmt = $conn->prepare($sql)) {
+      $stmt->bind_param("iissss", $comp, $usr, $pos, $remarks, $start, $end);
+
+      $comp = $_GET['company'];
+      $usr = $_GET['user'];
+      $pos = trim($_POST['position']);
+      $remarks = trim($_POST['remarks']);
+      $start = $_POST['start_date'];
+      $end = $_POST['end_date'];
+
+      if ($stmt->execute()) {
+        header("location: view_usr.php?company=" . $_GET['company'] . "&user=" . $_GET['user']);
+      } else {
+        header("location: ../error.php");
+      }
+      $stmt->close();
+    }
+  } else {
+    header("location: ../error.php");
+  }
+}
 ?>
 
 <!DOCTYPE html>
