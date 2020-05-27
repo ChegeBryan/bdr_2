@@ -44,7 +44,7 @@ require_once '../includes/config.php';
       }
     }
     ?>
-      <h4 class="text-center">User Details</h4>
+      <h4 class="text-center text-secondary">User Details</h4>
       <div class="row">
         <div class="col-sm-4">
           <img src="<?php echo $row['pic']; ?>" class="img-fluid img-thumbnail" alt="Profile Image">
@@ -79,13 +79,33 @@ require_once '../includes/config.php';
           <a href="#" class="btn btn-info">View Academics</a>
         </div>
       </div>
+    </div>
 
-      <script src="../assets/js/jquery.min.js">
-      </script>
+    <div class="container" style="width: 1024px">
+      <div class="table-responsive">
+        <table class="table table-striped table-hover table-bordered">
+          <thead class="text-secondary">
+            <tr>
+              <th scope="col">Entered on</th>
+              <th scope="col">Company</th>
+              <th scope="col">Position</th>
+              <th scope="col">Remarks</th>
+              <th scope="col">Started on</th>
+              <th scope="col">Ended on</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-      <script src="../assets/js/popper.min.js"></script>
-      <script src="../assets/bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
-      <script src="../js/clear_form.js"></script>
+    <script src="../assets/js/jquery.min.js">
+    </script>
+
+    <script src="../assets/js/popper.min.js"></script>
+    <script src="../assets/bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
+    <script src="../js/clear_form.js"></script>
 
   </body>
 
