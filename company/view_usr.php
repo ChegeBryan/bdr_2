@@ -74,7 +74,8 @@ require_once '../includes/config.php';
               </tr>
             </table>
           </div>
-          <a href="#" class="btn btn-info">Add work information</a>
+          <a href="<?php echo 'add_work_info.php?company=' . $_GET['company'] . '&user=' . $_GET['user'] ?>"
+             class="btn btn-info">Add work information</a>
           <a href="#" class="btn btn-info">View Academics</a>
         </div>
       </div>
