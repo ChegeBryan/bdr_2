@@ -138,7 +138,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $(document).ready(function() {
       $('input[type="file"]').change(function(e) {
         var filename = e.target.files[0].name;
-        $(".custom-file-label").textContent(filename);
+        $(".custom-file-label").text(filename);
       });
     });
     </script>
