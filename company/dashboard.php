@@ -31,7 +31,8 @@ if (isset($_SESSION["company_logged_In"]) || $_SESSION["company_logged_in"] !== 
               <p class="card-text">Search user using their registration number</p>
               <p class="card-text">View user details</p>
               <p class="card-text">Add work experience information</p>
-              <a href="#" class="btn btn-primary stretched-link btn-block">User Directory</a>
+              <a href="<?php echo 'search_user.php?company=' . $_SESSION['comp_id'] ?>"
+                 class="btn btn-primary stretched-link btn-block">User Directory</a>
             </div>
           </div>
         </div>

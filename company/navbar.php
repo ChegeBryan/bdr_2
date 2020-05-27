@@ -10,7 +10,7 @@
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link text-white" href="#">Search
+        <a class="nav-link text-white" href="<?php echo 'search_user.php?company=' . $_SESSION['comp_id'] ?>">Search
           User</a>
       </li>
       <li class="nav-item">
