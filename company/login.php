@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           if ($stmt->fetch()) {
             if (password_verify($password, $hashed_password)) {
 
-              $_SESSION["school_logged_in"] = true;
+              $_SESSION["company_logged_in"] = true;
               $_SESSION["comp_id"] = $id;
               $_SESSION["comp"] = $comp_id;
 
