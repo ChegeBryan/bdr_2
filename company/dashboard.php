@@ -44,7 +44,8 @@ if (isset($_SESSION["company_logged_In"]) || $_SESSION["company_logged_in"] !== 
               <h6 class="card-subtitle mb-2 text-muted font-weight-bold">Visit page to:</h6>
               <p class="card-text">View registered users who have worked in this company before.</p>
               <p class="card-text">View user details</p>
-              <a href="#" class="btn btn-primary stretched-link btn-block">View Users</a>
+              <a href="<?php echo 'view_users.php?company=' . $_SESSION['comp_id'] ?>"
+                 class="btn btn-primary stretched-link btn-block">View Users</a>
             </div>
           </div>
         </div>
