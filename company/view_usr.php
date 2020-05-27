@@ -75,6 +75,7 @@ require_once '../includes/config.php';
             </table>
           </div>
           <a href="#" class="btn btn-info">Add work information</a>
+          <a href="#" class="btn btn-info">View Academics</a>
         </div>
       </div>
 
