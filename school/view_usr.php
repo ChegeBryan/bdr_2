@@ -135,6 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <script src="../assets/js/popper.min.js"></script>
     <script src="../assets/bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
+    <script src="../js/clear_form.js"></script>
 
     <script>
     $(document).ready(function() {
