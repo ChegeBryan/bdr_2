@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (isset($_SESSION["school_logged_In"]) || $_SESSION["school_logged_in"] !== true) {
+  header("location: login.php");
+  exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
