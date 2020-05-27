@@ -30,7 +30,8 @@ if (isset($_SESSION["school_logged_In"]) || $_SESSION["school_logged_in"] !== tr
               <p class="card-text">Search user using their registration number</p>
               <p class="card-text">View user details</p>
               <p class="card-text">Upload academic certificate</p>
-              <a href="#" class="btn btn-primary stretched-link btn-block">User Directory</a>
+              <a href="<?php echo 'search_user.php?school=' . $_SESSION['sch_id'] ?>"
+                 class="btn btn-primary stretched-link btn-block">User Directory</a>
             </div>
           </div>
         </div>
