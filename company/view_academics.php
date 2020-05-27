@@ -15,7 +15,7 @@ require_once '../includes/config.php';
 
   <head>
     <?php include '../head.php'; ?>
-    <title>Company | View User</title>
+    <title>Company | View User Academics</title>
   </head>
 
   <body>
@@ -44,7 +44,7 @@ require_once '../includes/config.php';
       }
     }
     ?>
-      <h4 class="text-center text-secondary">User Details</h4>
+      <h4 class="text-center text-secondary">User Academics Details</h4>
       <div class="row">
         <div class="col-sm-4">
           <img src="<?php echo $row['pic']; ?>" class="img-fluid img-thumbnail" alt="Profile Image">
@@ -74,36 +74,32 @@ require_once '../includes/config.php';
               </tr>
             </table>
           </div>
-          <a href="<?php echo 'add_work_info.php?company=' . $_GET['company'] . '&user=' . $_GET['user'] ?>"
-             class="btn btn-info">Add work information</a>
-          <a href="<?php echo 'view_academics.php?company=' . $_GET['company'] . '&user=' . $_GET['user'] ?>"
-             class="btn btn-info">View Academics</a>
+          <a href="<?php echo 'view_usr.php?company=' . $_GET['company'] . '&user=' . $_GET['user'] ?>"
+             class="btn btn-info">View Work Information</a>
         </div>
       </div>
     </div>
 
     <div class="container" style="width: 1024px">
       <div class="table-responsive">
-        <table class="table table-striped table-hover table-bordered">
+        <table class="table table-striped table-hover table-bordered table-sm">
           <thead class="text-secondary">
             <tr>
               <th scope="col">Entered on</th>
-              <th scope="col">Company</th>
-              <th scope="col">Position</th>
-              <th scope="col">Remarks</th>
-              <th scope="col">Started on</th>
-              <th scope="col">Ended on</th>
+              <th scope="col">School Name</th>
+              <th scope="col">Level</th>
+              <th scope="col">Certificate</th>
             </tr>
           </thead>
           <tbody>
             <?php
           if (isset($_GET["user"])) {
-            $sql = "SELECT entered_on, name, position, remarks, start_date, end_date
-                    FROM bdr_work_information
-                    JOIN bdr_company
-                    ON bdr_work_information.company=bdr_company.id
-                    WHERE bdr_work_information.user= ?
-                    ORDER BY bdr_work_information.id DESC";
+            $sql = "SELECT bdr_academics.id, entered_on, name, level, certificate
+                    FROM bdr_academics
+                    JOIN bdr_school
+                    ON bdr_academics.school=bdr_school.id
+                    WHERE bdr_academics.user= ?
+                    ORDER BY bdr_academics.id DESC";
 
             if ($stmt = $conn->prepare($sql)) {
               $stmt->bind_param("i", $user);
@@ -118,14 +114,12 @@ require_once '../includes/config.php';
                     echo "<tr>";
                     echo "<td>" . date_format(date_create($row['entered_on']), "d-M-Y") . "</td>";
                     echo "<td>" . $row["name"] . "</td>";
-                    echo "<td>" . $row["position"] . "</td>";
-                    echo "<td>" . $row['remarks'] . "</td>";
-                    echo "<td>" . date_format(date_create($row['start_date']), "d-M-Y") . "</td>";
-                    echo "<td>" . date_format(date_create($row['end_date']), "d-M-Y") . "</td>";
+                    echo "<td>" . $row["level"] . "</td>";
+                    echo "<td><a class='btn btn-info btn-sm' href='" . $row['certificate'] . "' target='_blank'>View</a></td>";
                     echo "</tr>";
                   }
                 } else {
-                  echo "<tr><td colspan='6'>No Work information entered yet.</td></tr>";
+                  echo "<tr><td colspan='4'>No School information entered yet.</td></tr>";
                 }
               }
               $stmt->close();
@@ -137,12 +131,20 @@ require_once '../includes/config.php';
       </div>
     </div>
 
-    <script src="../assets/js/jquery.min.js">
-    </script>
+    <script src="../assets/js/jquery.min.js"></script>
 
     <script src="../assets/js/popper.min.js"></script>
     <script src="../assets/bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
     <script src="../js/clear_form.js"></script>
+
+    <script>
+    $(document).ready(function() {
+      $('input[type="file"]').change(function(e) {
+        var filename = e.target.files[0].name;
+        $(".custom-file-label").text(filename);
+      });
+    });
+    </script>
 
   </body>
 
