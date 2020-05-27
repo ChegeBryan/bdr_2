@@ -143,6 +143,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </tr>
           </thead>
           <tbody>
+            <?php
+          if (isset($_GET["user"])) {
+            $sql = "SELECT bdr_academics.id, entered_on, name, level, certificate
+                    FROM bdr_academics
+                    JOIN bdr_school
+                    ON bdr_academics.school=bdr_school.id
+                    WHERE bdr_academics.user= ?
+                    ORDER BY bdr_academics.id DESC";
+
+            if ($stmt = $conn->prepare($sql)) {
+              $stmt->bind_param("i", $user);
+
+              $user = $_GET["user"];
+
+              if ($stmt->execute()) {
+                $result = $stmt->get_result();
+
+                if ($result->num_rows > 0) {
+                  while ($row = $result->fetch_array()) {
+                    echo "<tr>";
+                    echo "<td>" . date_format(date_create($row['entered_on']), "d-M-Y") . "</td>";
+                    echo "<td>" . $row["name"] . "</td>";
+                    echo "<td>" . $row["level"] . "</td>";
+                    echo "</tr>";
+                  }
+                } else {
+                  echo "<tr><td colspan='4'>No School information entered yet.</td></tr>";
+                }
+              }
+              $stmt->close();
+            }
+          }
+          ?>
           </tbody>
         </table>
       </div>
