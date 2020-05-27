@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (isset($_SESSION["hospital_logged_In"]) || $_SESSION["hospital_logged_in"] !== true) {
+if (isset($_SESSION["school_logged_In"]) || $_SESSION["school_logged_in"] !== true) {
   header("location: login.php");
   exit;
 }
@@ -12,7 +12,7 @@ if (isset($_SESSION["hospital_logged_In"]) || $_SESSION["hospital_logged_in"] !=
 
   <head>
     <?php include '../head.php'; ?>
-    <title>Hospital | Dashboard</title>
+    <title>School | Dashboard</title>
   </head>
 
   <body>
@@ -29,23 +29,22 @@ if (isset($_SESSION["hospital_logged_In"]) || $_SESSION["hospital_logged_in"] !=
               <h6 class="card-subtitle mb-2 text-muted font-weight-bold">Visit page to:</h6>
               <p class="card-text">Search user using their registration number</p>
               <p class="card-text">View user details</p>
-              <p class="card-text">Add user health</p>
-              <p class="card-text">Update user health</p>
-              <a href="search_user.php" class="btn btn-primary stretched-link btn-block">User Directory</a>
+              <p class="card-text">Upload academic certificate</p>
+              <a href="<?php echo 'search_user.php?school=' . $_SESSION['sch_id'] ?>"
+                 class="btn btn-primary stretched-link btn-block">User Directory</a>
             </div>
           </div>
         </div>
         <div class="col-sm-6">
           <div class="card shadow-lg rounded-lg mb-2">
-            <i class="fa fa-5x fa fa-user-md text-center text-primary py-4"></i>
+            <i class="fa fa-5x fa-mortar-board text-center text-primary py-4"></i>
             <div class="card-body text-center">
-              <h4 class="card-title">Hospital Directory</h4>
+              <h4 class="card-title">School Directory</h4>
               <h6 class="card-subtitle mb-2 text-muted font-weight-bold">Visit page to:</h6>
-              <p class="card-text">View users registered who have had their health information registered with the
-                hospital before.</p>
+              <p class="card-text">View registered users who have recorded their academic information with the school
+                before.</p>
               <p class="card-text">View user details</p>
-              <a href="<?php echo 'view_users.php?hospital=' . $_SESSION['hosp_id'] ?>"
-                 class="btn btn-primary stretched-link btn-block">View Users</a>
+              <a href="#" class="btn btn-primary stretched-link btn-block">View Users</a>
             </div>
           </div>
         </div>

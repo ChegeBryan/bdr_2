@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (isset($_SESSION["hospital_logged_In"]) || $_SESSION["hospital_logged_in"] !== true) {
+if (isset($_SESSION["school_logged_In"]) || $_SESSION["school_logged_in"] !== true) {
   header("location: login.php");
   exit;
 }
@@ -12,7 +12,7 @@ if (isset($_SESSION["hospital_logged_In"]) || $_SESSION["hospital_logged_in"] !=
 
   <head>
     <?php include '../head.php'; ?>
-    <title>Hospital | Search User</title>
+    <title>School | Search User</title>
   </head>
 
   <body>
@@ -60,9 +60,7 @@ if (isset($_SESSION["hospital_logged_In"]) || $_SESSION["hospital_logged_in"] !=
 
     <script src="../assets/js/popper.min.js"></script>
     <script src="../assets/bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
-
     <script src="../js/find_usr.js"></script>
-
   </body>
 
 </html>
