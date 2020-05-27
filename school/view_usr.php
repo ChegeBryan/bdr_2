@@ -131,6 +131,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       </div>
     </div>
 
+    <div class="container" style="width: 1024px">
+      <div class="table-responsive">
+        <table class="table table-striped table-hover table-bordered">
+          <thead class="text-secondary">
+            <tr>
+              <th scope="col">Entered on</th>
+              <th scope="col">School Name</th>
+              <th scope="col">Level</th>
+              <th scope="col">Certificate</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
     <script src="../assets/js/jquery.min.js"></script>
 
     <script src="../assets/js/popper.min.js"></script>
