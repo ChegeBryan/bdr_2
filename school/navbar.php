@@ -17,7 +17,7 @@
         <a class="nav-link text-white" href="<?php echo 'view_users.php?school=' . $_SESSION['sch_id'] ?>">Users</a>
       </li>
       <li class=" nav-item">
-        <a class="nav-link text-white" href="#">Logout</a>
+        <a class="nav-link text-white" href="logout.php">Logout</a>
       </li>
     </ul>
   </div>
