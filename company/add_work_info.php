@@ -77,14 +77,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <div class="form-group <?php echo (!empty($date_error)) ? 'has-error' : ''; ?>">
             <label for="start_date">Started on</label>
             <input type="date" class="form-control" id="start_date" name="start_date"
-                   max="<?php echo date("Y-m-d", strtotime('yesterday')); ?>" required>
+                   max="<?php echo date("Y-m-d", strtotime('yesterday')); ?>" onkeydown="return false" required>
             <span class="form-text text-danger"><small><?php echo $date_error; ?></small></span>
 
           </div>
           <div class="form-group">
             <label for="end_date">Stopped on</label>
             <input type="date" class="form-control" id="end_date" name="end_date" max="<?php echo date("Y-m-d"); ?>"
-                   required>
+                   onkeydown="return false" required>
           </div>
           <button type="submit" class="btn btn-primary btn-block">Submit</button>
         </form>
