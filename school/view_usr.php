@@ -136,6 +136,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <script src="../assets/js/popper.min.js"></script>
     <script src="../assets/bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
 
+    <script>
+    $(document).ready(function() {
+      $('input[type="file"]').change(function(e) {
+        var filename = e.target.files[0].name;
+        $(".custom-file-label").text(filename);
+      });
+    });
+    </script>
+
   </body>
 
 </html>
