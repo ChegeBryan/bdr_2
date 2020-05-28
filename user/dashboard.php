@@ -91,7 +91,8 @@ require_once '../includes/config.php';
           <div class="card shadow-lg rounded-lg mb-2">
             <i class="fa fa-5x fa-heartbeat text-center text-primary py-3"></i>
             <div class="card-body text-center">
-              <a href="#" class="btn btn-primary stretched-link btn-block">View Health</a>
+              <a href="<?php echo 'view_health.php?user=' . $_GET['user'] ?>"
+                 class="btn btn-primary stretched-link btn-block">View Health</a>
             </div>
           </div>
         </div>

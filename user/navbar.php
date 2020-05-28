@@ -10,7 +10,7 @@
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link text-white" href="#">Health</a>
+        <a class="nav-link text-white" href="<?php echo 'view_health.php?user=' . $_GET['user'] ?>">Health</a>
       </li>
       <li class="nav-item">
         <a class="nav-link text-white" href="#">Academics</a>
