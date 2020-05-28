@@ -109,7 +109,8 @@ require_once '../includes/config.php';
           <div class="card shadow-lg rounded-lg mb-2">
             <i class="fa fa-5x fa-briefcase text-center text-primary py-3"></i>
             <div class="card-body text-center">
-              <a href="#" class="btn btn-primary stretched-link btn-block">View Work Reviews</a>
+              <a href="<?php echo 'view_work.php?user=' . $_GET['user'] ?>"
+                 class="btn btn-primary stretched-link btn-block">View Work Reviews</a>
             </div>
           </div>
         </div>

@@ -16,7 +16,7 @@
         <a class="nav-link text-white" href="<?php echo 'view_education.php?user=' . $_GET['user'] ?>">Academics</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="#">Work</a>
+        <a class="nav-link text-white" href="<?php echo 'view_work.php?user=' . $_GET['user'] ?>">Work</a>
       </li>
       <li class=" nav-item">
         <a class="nav-link text-white" href="#">Logout</a>
