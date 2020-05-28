@@ -83,6 +83,37 @@ require_once '../includes/config.php';
       </div>
     </div>
 
+    <hr style="width: 1024px">
+
+    <div class="container py-3" style="width: 1024px">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="card shadow-lg rounded-lg mb-2">
+            <i class="fa fa-5x fa-heartbeat text-center text-primary py-3"></i>
+            <div class="card-body text-center">
+              <a href="#" class="btn btn-primary stretched-link btn-block">View Health</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card shadow-lg rounded-lg mb-2">
+            <i class="fa fa-5x fa-mortar-board text-center text-primary py-3"></i>
+            <div class="card-body text-center">
+              <a href="#" class="btn btn-primary stretched-link btn-block">View Education</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card shadow-lg rounded-lg mb-2">
+            <i class="fa fa-5x fa-briefcase text-center text-primary py-3"></i>
+            <div class="card-body text-center">
+              <a href="#" class="btn btn-primary stretched-link btn-block">View Work Reviews</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="assets/js/jquery.min.js"></script>
 
     <script src="assets/js/popper.min.js"></script>
