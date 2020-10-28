@@ -27,9 +27,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
   if (empty($comp_id_err) && empty($password_err)) {
-    $sql = "SELECT id, userId, password
+    $sql = "SELECT id, userid, password
     FROM bdr_users
-    WHERE user_id = ?";
+    WHERE userid = ?";
 
     if ($stmt = $conn->prepare($sql)) {
 
