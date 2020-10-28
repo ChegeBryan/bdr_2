@@ -44,7 +44,8 @@ if (isset($_SESSION["school_logged_In"]) || $_SESSION["school_logged_in"] !== tr
               <p class="card-text">View registered users who have recorded their academic information with the school
                 before.</p>
               <p class="card-text">View user details</p>
-              <a href="#" class="btn btn-primary stretched-link btn-block">View Users</a>
+              <a href="<?php echo 'view_users.php?school=' . $_SESSION['sch_id'] ?>"
+                 class="btn btn-primary stretched-link btn-block">View Users</a>
             </div>
           </div>
         </div>
